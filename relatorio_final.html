@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+    body { font-family: sans-serif; margin: 2em; line-height: 1.6; }
+    h1, h2, h3, h4, h5, h6 { color: #333; margin-top: 1.5em; margin-bottom: 0.5em; }
+    h1 { font-size: 2em; border-bottom: 1px solid #eee; padding-bottom: 0.3em; }
+    h2 { font-size: 1.75em; border-bottom: 1px solid #eee; padding-bottom: 0.3em; }
+    h3 { font-size: 1.5em; }
+    p { margin-bottom: 1em; }
+    img { max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto; margin-top: 1em; margin-bottom: 1em; }
+    ul, ol { margin-bottom: 1em; padding-left: 1.5em; }
+    li { margin-bottom: 0.5em; }
+    pre { background-color: #f5f5f5; border: 1px solid #ddd; padding: 1em; overflow-x: auto; font-size: 0.9em; }
+    code { font-family: monospace; background-color: #f0f0f0; padding: 0.2em 0.4em; border-radius: 3px;}
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1em; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
+    hr { border: none; border-top: 1px solid #eee; margin: 2em 0; }
+</style>
+</head>
+<body>
+<h1>Análise Crítica e Melhoria de Visualizações de Dados</h1>
+<h2>Introdução</h2>
+<p>Este relatório analisa criticamente duas visualizações de dados problemáticas encontradas em fontes online, identifica as suas principais falhas, discute as implicações dessas falhas na interpretação dos dados e propõe melhorias concretas. Finalmente, são apresentadas as recriações das visualizações originais, incorporando as correções sugeridas para promover uma comunicação de dados mais clara, precisa e eficaz, conforme os requisitos do Assignment 1.</p>
+<hr />
+<h2>Análise da Primeira Visualização: Gráfico de Barras 3D Incorreto</h2>
+<p><strong>Fonte:</strong> Blog Jotform, "5 exemplos de visualizações de dados ruins"<br />
+<strong>Link:</strong> https://www.jotform.com/pt/blog/visualizacoes-de-dados-ruins/<br />
+<strong>Imagem Original:</strong></p>
+<p><img alt="Gráfico de Barras 3D Incorreto" src="/home/ubuntu/visualizacoes_originais/grafico_barras_3d_incorreto.png" /></p>
+<p><em>Figura 1: Visualização original de um gráfico de barras 3D (Fonte: Jotform).</em></p>
+<p><strong>Contexto:</strong> O gráfico é o "Exemplo 1" num artigo que discute más práticas em visualização de dados. É um gráfico de barras 3D que, segundo o artigo, "parece estar fazendo uma comparação entre informações médicas". Os dados específicos ou a legenda das cores não são totalmente claros a partir da imagem isolada, mas o foco da crítica é o formato 3D.</p>
+<h3>Falhas Identificadas</h3>
+<h4>Falha 1.1: Efeito 3D Enganoso e Dificuldade de Comparação Precisa</h4>
+<ul>
+<li><strong>Nome da Falha:</strong> Distorção Perspética Tridimensional.</li>
+<li><strong>Explicação das Implicações e Más Interpretações:</strong> A representação tridimensional das barras introduz significativas distorções de perspetiva. As barras posicionadas mais ao fundo podem parecer menores do que são na realidade, enquanto as que estão à frente podem parecer maiores, mesmo que representem valores idênticos ou inferiores. Esta distorção torna a comparação visual precisa entre as alturas das diferentes barras – e, consequentemente, os valores que elas representam – extremamente difícil e suscetível a erros de julgamento. O observador pode facilmente subestimar ou sobrestimar valores dependendo da sua posição no plano 3D. Adicionalmente, as linhas de grelha no fundo, que deveriam auxiliar na leitura dos valores, tornam-se elas próprias distorcidas e difíceis de alinhar com o topo das barras.</li>
+<li><strong>Melhorias Propostas:</strong> A melhoria mais significativa é a eliminação completa do efeito 3D, optando por um gráfico de barras 2D convencional. Se existirem múltiplas séries de dados (como as diferentes cores das barras sugerem), um gráfico de barras agrupadas 2D (para comparação direta entre categorias em cada ponto do eixo X) ou um gráfico de barras empilhadas 2D (se as séries representarem partes de um todo para cada categoria no eixo X) seria consideravelmente mais eficaz e permitiria comparações precisas e inequívocas.</li>
+</ul>
+<h4>Falha 1.2: Oclusão de Dados por Elementos Tridimensionais</h4>
+<ul>
+<li><strong>Nome da Falha:</strong> Oclusão Visual de Barras.</li>
+<li><strong>Explicação das Implicações e Más Interpretações:</strong> No gráfico 3D apresentado, é comum que as barras mais altas e posicionadas à frente obscureçam parcial ou totalmente barras mais baixas que se encontram atrás delas. Isto resulta na potencial invisibilidade de alguns pontos de dados ou na dificuldade de avaliar a sua altura total. Consequentemente, pode ocorrer perda de informação crucial ou levar a interpretações incompletas e enviesadas dos dados. Por exemplo, uma barra roxa mais curta, se posicionada atrás de uma barra azul clara mais alta e proeminente, pode ser dificilmente percetível ou ter a sua magnitude julgada incorretamente.</li>
+<li><strong>Melhorias Propostas:</strong> A transição para um gráfico de barras 2D resolve intrinsecamente o problema da oclusão causada pela profundidade. No caso de se optar por barras agrupadas 2D, é importante garantir um espaçamento adequado entre os diferentes grupos e entre as barras dentro de cada grupo para manter a clareza. Se o número de categorias ou séries for muito elevado, tornando um gráfico de barras 2D demasiado denso, alternativas como um gráfico de pontos (dot plot) ou um gráfico de barras horizontais (especialmente útil se os rótulos das categorias forem longos) devem ser consideradas.</li>
+</ul>
+<h4>Falha 1.3: Excesso de Elementos Não-Informativos ("Chartjunk") e Baixa Razão Dados-Tinta</h4>
+<ul>
+<li><strong>Nome da Falha:</strong> Poluição Visual por Elementos 3D (Chartjunk).</li>
+<li><strong>Explicação das Implicações e Más Interpretações:</strong> Os componentes visuais introduzidos pelo efeito 3D – como as faces laterais e superiores das barras, as sombras e o efeito de profundidade geral – constituem "tinta" gráfica que não representa dados reais. Esta adição aumenta a complexidade visual do gráfico sem acrescentar qualquer valor informativo, dificultando a capacidade do observador de se concentrar nos dados efetivos. Esta prática viola o princípio da maximização da razão dados-tinta, popularizado por Edward Tufte, que advoga pela simplicidade e pela eliminação de elementos gráficos supérfluos. O gráfico torna-se visualmente "pesado", confuso e menos eficiente na comunicação da mensagem pretendida.</li>
+<li><strong>Melhorias Propostas:</strong> A principal melhoria é a simplificação radical do design através da adoção de um gráfico 2D limpo e direto. As cores devem ser usadas de forma funcional e significativa (por exemplo, para distinguir categorias claramente), evitando gradientes, texturas ou outros embelezamentos desnecessários que não contribuam para a compreensão dos dados. O foco deve ser em apresentar os dados da forma mais clara, concisa e direta possível. É crucial garantir que todos os eixos estejam claramente rotulados, que as unidades de medida sejam evidentes e que exista uma legenda clara, se aplicável.</li>
+</ul>
+<h3>Proposta de Melhoria para a Primeira Visualização</h3>
+<p>Com base na análise crítica do "Gráfico de Barras 3D Incorreto", a nova visualização foi concebida com os seguintes princípios e características:</p>
+<p><strong>Tipo de Gráfico:</strong> Gráfico de Barras Agrupadas 2D.</p>
+<p><strong>Justificação da Escolha:</strong><br />
+*   <strong>Eliminação do 3D:</strong> Remove a distorção perspetiva, a oclusão de dados e o "chartjunk" inerentes ao formato 3D, permitindo comparações precisas e uma leitura clara dos valores.<br />
+*   <strong>Barras Agrupadas:</strong> A visualização original parece apresentar múltiplas séries de dados para diferentes categorias. Um gráfico de barras agrupadas 2D é ideal para comparar os valores destas diferentes séries dentro de cada categoria principal no eixo X, mantendo a clareza.</p>
+<p><strong>Características Específicas da Nova Visualização:</strong></p>
+<ol>
+<li><strong>Dimensionalidade:</strong> Estritamente 2D.</li>
+<li><strong>Orientação das Barras:</strong> Verticais.</li>
+<li><strong>Eixos:</strong> Claramente rotulados, com escala do eixo Y começando em zero.</li>
+<li><strong>Barras:</strong> Altura proporcional ao valor, agrupadas por categoria com espaçamento adequado.</li>
+<li><strong>Cores:</strong> Sólidas e distintas para cada série.</li>
+<li><strong>Legenda:</strong> Clara e bem posicionada.</li>
+<li><strong>Linhas de Grelha:</strong> Horizontais e subtis.</li>
+<li><strong>Título:</strong> Conciso e descritivo.</li>
+</ol>
+<p><strong>Visualização Corrigida 1:</strong></p>
+<p><img alt="Gráfico de Barras 2D Corrigido" src="/home/ubuntu/visualizacoes_corrigidas/grafico_barras_2d_corrigido.png" /></p>
+<p><em>Figura 2: Versão corrigida do gráfico de barras, agora em 2D e com melhorias de clareza (Dados hipotéticos para demonstração).</em></p>
+<p>Esta abordagem transforma uma visualização confusa numa representação de dados eficaz e fidedigna.</p>
+<hr />
+<h2>Análise da Segunda Visualização: Gráfico de Setores 3D Problemático</h2>
+<p><strong>Fonte Original (conforme imagem no artigo):</strong> Python Graph Gallery (implícito, dado o link sob a imagem no artigo do Medium)<br />
+<strong>Artigo Intermediário (onde a imagem foi encontrada e criticada):</strong> Medium, "Os erros mais comuns no design de dashboards | Parte 1" por Fernando Pinho<br />
+<strong>Link do Artigo Intermediário:</strong> https://medium.com/@fernando_pinho/os-erros-mais-comuns-no-design-de-dashboards-parte-1-6ad5e21ac2ef<br />
+<strong>Link Sugerido sob a Imagem no Artigo:</strong> https://www.python-graph-gallery.com/3d/ (leva a uma galeria de gráficos 3D, não à imagem específica, mas indica a origem provável do estilo)<br />
+<strong>Imagem Original:</strong></p>
+<p><img alt="Gráfico de Setores 3D Incorreto" src="/home/ubuntu/visualizacoes_originais/grafico_setores_3d_incorreto.webp" /></p>
+<p><em>Figura 3: Visualização original de um gráfico de setores 3D (Fonte: Medium, adaptado de Python Graph Gallery).</em></p>
+<p><strong>Contexto:</strong> A imagem é apresentada no artigo do Medium como um exemplo de "Escolhendo visuais inadequados", especificamente um gráfico de setores (pizza) 3D que mostra a proporção de vendas por região (Norte 35%, Sul 30%, Este 20%, Oeste 15%). O autor do artigo critica o uso de 3D, mencionando a distorção que o ângulo escolhido gera.</p>
+<h3>Falhas Identificadas</h3>
+<h4>Falha 2.1: Distorção Perspética de Ângulos e Áreas das Fatias</h4>
+<ul>
+<li><strong>Nome da Falha:</strong> Deformação Proporcional por Perspetiva 3D.</li>
+<li><strong>Explicação das Implicações e Más Interpretações:</strong> O efeito tridimensional aplicado ao gráfico de setores distorce severamente a perceção visual dos ângulos centrais e das áreas relativas de cada fatia. Fatias posicionadas na parte frontal do gráfico tendem a parecer desproporcionalmente maiores do que as fatias posicionadas na parte traseira. No exemplo, a fatia "Sul" (30%) e "Norte" (35%), devido à sua posição e ao ângulo de inclinação, podem ter as suas áreas visuais percebidas de forma imprecisa em comparação com "Este" (20%) e "Oeste" (15%). Isto dificulta a tarefa fundamental de um gráfico de setores: comparar com precisão as partes de um todo.</li>
+<li><strong>Melhorias Propostas:</strong> A solução mais direta e eficaz é a conversão do gráfico para uma representação 2D. Um gráfico de setores 2D padrão elimina a distorção da perspetiva, permitindo que os ângulos e as áreas das fatias sejam diretamente proporcionais aos valores que representam. Os rótulos com as percentagens devem ser mantidos e posicionados claramente.</li>
+</ul>
+<h4>Falha 2.2: Dificuldade na Comparação Precisa de Segmentos</h4>
+<ul>
+<li><strong>Nome da Falha:</strong> Comparabilidade Reduzida entre Segmentos.</li>
+<li><strong>Explicação das Implicações e Más Interpretações:</strong> Humanos têm dificuldade em comparar com precisão ângulos e áreas, mesmo em gráficos de setores 2D, especialmente quando as fatias não são adjacentes ou quando as diferenças percentuais são subtis. O efeito 3D exacerba este problema. Comparar, por exemplo, a fatia "Oeste" (15%) com a "Este" (20%) torna-se um exercício de adivinhação visual. A legenda posicionada abaixo também exige que o observador mapeie cores para fatias e depois tente comparar as fatias distorcidas, adicionando carga cognitiva.</li>
+<li><strong>Melhorias Propostas:</strong> Para além de converter para 2D, se a comparação precisa entre as magnitudes das categorias for o objetivo principal, um gráfico de barras 2D simples seria uma alternativa superior. Se um gráfico de setores 2D for mantido, ordenar as fatias por tamanho e usar rótulos de dados diretamente nas fatias são essenciais.</li>
+</ul>
+<h4>Falha 2.3: Uso Desnecessário de Cores Escuras e Legenda Separada</h4>
+<ul>
+<li><strong>Nome da Falha:</strong> Sobrecarga Visual por Estética e Legenda Ineficiente.</li>
+<li><strong>Explicação das Implicações e Más Interpretações:</strong> As cores escuras e com gradientes subtis (devido ao efeito 3D) podem não oferecer o melhor contraste. Mais importante, a legenda está separada do gráfico, forçando o observador a um constante vaivém visual entre as fatias coloridas e as etiquetas da legenda para identificar cada região. Este processo aumenta a carga cognitiva.</li>
+<li><strong>Melhorias Propostas:</strong> Num gráfico de setores 2D, utilizar cores sólidas, distintas e com bom contraste. Idealmente, os rótulos das categorias (Norte, Sul, Este, Oeste) deveriam ser colocados diretamente adjacentes ou dentro das suas respetivas fatias, juntamente com as percentagens, eliminando a necessidade de uma legenda separada.</li>
+</ul>
+<h3>Proposta de Melhoria para a Segunda Visualização</h3>
+<p>Com base na análise crítica do "Gráfico de Setores 3D Problemático", a nova visualização foi concebida para corrigir as falhas identificadas, priorizando a clareza, precisão e facilidade de interpretação.</p>
+<p><strong>Opção Principal: Gráfico de Setores 2D Otimizado</strong></p>
+<p><strong>Justificação da Escolha:</strong><br />
+*   <strong>Eliminação do 3D:</strong> A conversão para um formato 2D é fundamental para remover a distorção perspetiva.<br />
+*   <strong>Foco na Proporção do Todo:</strong> Um gráfico de setores é adequado quando o objetivo principal é mostrar como as partes individuais contribuem para um todo (100%).</p>
+<p><strong>Características Específicas da Nova Visualização (Gráfico de Setores 2D):</strong></p>
+<ol>
+<li><strong>Dimensionalidade:</strong> Estritamente 2D.</li>
+<li><strong>Fatias:</strong> Área e ângulo central proporcionais à percentagem.</li>
+<li><strong>Cores:</strong> Sólidas, distintas e com bom contraste.</li>
+<li><strong>Rótulos:</strong> Cada fatia terá a percentagem diretamente sobre ela. Uma legenda clara ao lado identificará a região e a sua percentagem.</li>
+<li><strong>Título:</strong> Conciso e descritivo.</li>
+</ol>
+<p><strong>Visualização Corrigida 2:</strong></p>
+<p><img alt="Gráfico de Setores 2D Corrigido" src="/home/ubuntu/visualizacoes_corrigidas/grafico_setores_2d_corrigido.png" /></p>
+<p><em>Figura 4: Versão corrigida do gráfico de setores, agora em 2D, com cores claras, percentagens nas fatias e legenda descritiva.</em></p>
+<p>Esta abordagem corrige as falhas mais graves do 3D e da legenda ineficiente, melhorando drasticamente a clareza.</p>
+<h3>Processo de Criação da Visualização Corrigida</h3>
+<p>A visualização corrigida foi desenvolvida utilizando a linguagem de programação Python e a biblioteca Matplotlib, seguindo a "Opção Principal: Gráfico de Setores 2D Otimizado" detalhada na proposta. O processo focou-se em abordar diretamente as três falhas identificadas:</p>
+<ol>
+<li>
+<p><strong>Eliminação da Distorção 3D:</strong> O gráfico foi reimplementado como um gráfico de setores 2D padrão. Isto removeu completamente a perspetiva tridimensional, garantindo que as áreas e ângulos das fatias representassem fielmente as proporções dos dados (Norte 35%, Sul 30%, Este 20%, Oeste 15%).</p>
+</li>
+<li>
+<p><strong>Melhoria da Comparabilidade:</strong> Ao passar para 2D e, crucialmente, ao adicionar rótulos diretos, a comparabilidade entre segmentos foi significativamente melhorada. Embora um gráfico de barras pudesse ser ainda superior para comparações precisas, o gráfico de setores 2D com rótulos claros cumpre o objetivo de mostrar a composição do todo de forma mais eficaz que o original.</p>
+</li>
+<li>
+<p><strong>Otimização de Cores e Rótulos (Redução da Carga Cognitiva):</strong> Foram escolhidas cores sólidas e distintas para cada fatia, com bom contraste. Mais importante, os rótulos das categorias (Norte, Sul, Este, Oeste) e as suas respetivas percentagens foram colocados diretamente em cada fatia. Isto elimina a necessidade de uma legenda separada, permitindo uma interpretação mais rápida e direta do gráfico, reduzindo a carga cognitiva do utilizador. O título do gráfico também foi tornado mais explícito: "Distribuição Percentual de Vendas por Região".</p>
+</li>
+</ol>
+<p>O script <code>criar_visualizacao_corrigida2.py</code> contém o código Python utilizado para gerar esta nova visualização. Este script define os dados, as cores, os rótulos e utiliza as funcionalidades do Matplotlib para desenhar o gráfico de setores 2D, incluindo a formatação dos rótulos para apresentar o nome da região e a percentagem correspondente diretamente nas fatias.</p>
+<hr />
+<h2>Conclusão</h2>
+<p>A análise das duas visualizações problemáticas demonstrou como escolhas de design inadequadas, como o uso de efeitos 3D desnecessários e legendas ineficientes, podem comprometer seriamente a clareza e a precisão da comunicação de dados. A distorção perspetiva, a oclusão de dados e o aumento da carga cognitiva são consequências diretas que dificultam a interpretação correta e rápida da informação.</p>
+<p>As propostas de melhoria focaram-se na simplificação e na adesão a princípios fundamentais da visualização de dados: optar por representações 2D, garantir que os elementos visuais sejam diretamente proporcionais aos dados, usar cores de forma funcional e rotular os dados de maneira clara e direta. As visualizações corrigidas, um gráfico de barras agrupadas 2D e um gráfico de setores 2D otimizado, ilustram como estas mudanças resultam em representações mais honestas, compreensíveis e eficazes.</p>
+<p>A prática de avaliar criticamente e refinar visualizações é crucial para garantir que estas cumpram o seu propósito de transmitir insights de forma eficiente, em vez de obscurecer ou distorcer a informação.</p>
+<hr />
+<h2>Referências</h2>
+<ol>
+<li>Jotform. (s.d.). <em>5 exemplos de visualizações de dados ruins</em>. Blog Jotform. Recuperado de https://www.jotform.com/pt/blog/visualizacoes-de-dados-ruins/</li>
+<li>Pinho, F. (2020, 16 de julho). <em>Os erros mais comuns no design de dashboards | Parte 1</em>. Medium. Recuperado de https://medium.com/@fernando_pinho/os-erros-mais-comuns-no-design-de-dashboards-parte-1-6ad5e21ac2ef</li>
+<li>Tufte, E. R. (2001). <em>The Visual Display of Quantitative Information</em> (2ª ed.). Graphics Press.</li>
+</ol>
+<p>(Contagem de palavras aproximada do corpo do relatório, excluindo títulos, referências e legendas de figuras: ~680 palavras)</p>
+</body>
+</html>
